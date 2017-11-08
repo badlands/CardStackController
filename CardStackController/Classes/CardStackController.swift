@@ -9,7 +9,7 @@ import UIKit
 
 public class CardStackController: UIViewController {
     
-    public typealias CompletionBlock = (Void) -> ()
+    public typealias CompletionBlock = () -> ()
 
     fileprivate struct CardStackControllerPalette {
         static let backgroundColor = UIColor.black.withAlphaComponent(0.4)
@@ -439,7 +439,7 @@ public class CardStackController: UIViewController {
         animator.removeBehavior(dynamicItemBehavior)
         animator.removeBehavior(collisionBehavior)
         guard automaticallyDismiss else { return }
-        dismiss(animated: false) { finished in
+        dismiss(animated: false) {
             self.delegate?.didFinishDismissingCardController?()
         }
     }
